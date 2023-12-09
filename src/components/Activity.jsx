@@ -4,6 +4,22 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Input from '@mui/material/Input';
+
+const ariaLabel = { 'aria-label': 'description' };
+
+const theme = createTheme({
+    palette: {
+        secondary: {
+            main: '#ffcdd2',
+            light: '',
+            contrastText: '#d50000',
+        },
+    },
+});
+
 const Activity = ({ id }) => {
     const dispatch = useDispatch();
     const deleteActivity = () => {
@@ -17,8 +33,14 @@ const Activity = ({ id }) => {
     return (
         <div className='section'>
             <p>
-                <b>Activity:</b> {id}, <b>Duration:</b>
-                <button onClick={deleteActivity}>Delete</button>
+                <b>Activity:</b>{' '}
+                <Input disabled defaultValue="Activity" inputProps={ariaLabel} value={id} />{' '}
+                {/* <b>Activity:</b> {id}, */}
+                <b>Duration:</b>{' '}
+                <ThemeProvider theme={theme}>
+                    <Button onClick={deleteActivity} variant="contained" color="secondary">Delete</Button>
+                </ThemeProvider>
+                {/* <button onClick={deleteActivity}>Delete</button> */}
             </p>
         </div>
     );
