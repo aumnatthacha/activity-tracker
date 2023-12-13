@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { CardContent } from '@mui/material';
 
 const theme = createTheme({
     palette: {
@@ -27,22 +28,24 @@ const Workout = () => {
 
     return (
         <div className="workour-wrapper">
-            <h2>My Workout</h2>
-            <ThemeProvider theme={theme}>
-                <Button onClick={handleClick} variant="contained" color="secondary">Add Activity</Button>
-            </ThemeProvider>
+            <CardContent sx={{ bgcolor: "#E8E8E8" }}>
+                <h2>My Workout</h2>
+                <ThemeProvider theme={theme}>
+                    <Button onClick={handleClick} variant="contained" color="secondary">Add Activity</Button>
+                </ThemeProvider>
 
-            {add && <AddActivity />}
-            {allActivities.map((activity) => {
-                return (
-                    <Activity
-                        key={activity.id}
-                        id={activity.id}
-                        name={activity.name}
-                        duration={activity.duration}
-                    />
-                );
-            })}
+                {add && <AddActivity />}
+                {allActivities.map((activity) => {
+                    return (
+                        <Activity
+                            key={activity.id}
+                            id={activity.id}
+                            name={activity.name}
+                            duration={activity.duration}
+                        />
+                    );
+                })}
+            </CardContent>
         </div>
     );
 };

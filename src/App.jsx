@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>Workout Tracker</h1>
+      <h2>Workout Tracker</h2>
       <Workout />
     </div>
   );
